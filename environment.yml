@@ -1,0 +1,21 @@
+name: NeuroMorpho_ML_Pipeline
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - ipython
+  - jupyterlab
+  - matplotlib
+  - notebook
+  - numpy
+  - pandas
+  - scikit-learn
+  - black
+  - flake8
+  - isort
+  - pytest
+  - pip:
+    - python-dotenv
+    - mkdocs
+    - -e .
