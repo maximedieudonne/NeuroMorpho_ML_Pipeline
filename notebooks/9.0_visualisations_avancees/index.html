@@ -192,7 +192,7 @@
   
   
   <span class="md-ellipsis">
-    Accueil
+    Acccueil
     
   </span>
   
@@ -1074,9 +1074,10 @@ plt.imshow(H.T, origin="lower"); plt.title("Carte de densité XY")
     /* Ces sélecteurs fonctionnent généralement avec mkdocs-jupyter/nbconvert.
        Si rien ne s'active, essaie:
        selector: "div.cell", selector_input: "pre", selector_output: ".output" */
-    "selector": ".jp-Cell",
-    "selector_input": "pre",
-    "selector_output": ".jp-Cell-outputWrapper"
+    "selector": "div.cell",
+    "selector_input": "div.input, pre",
+    "selector_output": "div.output"
+
   }
   </script>
 
