@@ -1,0 +1,6 @@
+format: jb-book
+root: index
+chapters:
+  - file: intro
+  - file: notebooks/1.0_intro_setup.ipynb
+  - file: notebooks/2.0_chargement_QC.ipynb

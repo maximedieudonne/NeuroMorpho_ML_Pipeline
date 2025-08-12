@@ -1,0 +1,24 @@
+# --- Jupyter Book config ---
+title: NeuroMorpho ML – Demo
+author: "Maxime Dieudonné"
+only_build_toc_files: true
+
+repository:
+  url: https://github.com/maximedieudonne/NeuroMorpho_ML_Pipeline
+  path_to_book: docs
+  branch: master
+
+launch_buttons:
+  binderhub_url: "https://mybinder.org"
+  notebook_interface: "jupyterlab"
+  thebe: true  # Active le bouton "Live Code"
+
+execute:
+  execute_notebooks: "off"    # le build statique n'exécute pas; outputs déjà présents
+  timeout: 90
+
+sphinx:
+  config:
+    html_theme_options:
+      use_repository_button: true
+      use_issues_button: true
