@@ -1,36 +1,22 @@
-name: NeuroMorpho_ML_Pipeline
+name: neuromorpho-binder
 channels:
   - conda-forge
 dependencies:
   - python=3.10
-  - pip
+  - ipykernel
   - ipython
-  - jupyterlab
-  - matplotlib
-  - notebook
+  - jupyterlab             # utile si on ouvre le notebook en Binder/Lab
   - numpy
   - pandas
-  - scikit-learn
-  - black
-  - flake8
-  - isort
-  - pytest
-  - neurom
-  - morphio
-  - morphopy
-  - navis
-  - umap-learn
-  - scikit-learn
-  - pytorch
-  - pandas
-  - matplotlib
-  - seaborn
   - scipy
-  - numpy
-
+  - scikit-learn
+  - matplotlib
+  - umap-learn
+  - morphio                # dispo conda-forge
+  - pip
   - pip:
-    - python-dotenv
-    - mkdocs
-    - mkdocs-material
-    - mkdocs-jupyter
-    - -e .
+      - neurom             # via pip, plus simple que conda ici
+      - morphopy
+      - navis
+      - ipywidgets         # widgets côté navigateur (Thebe charge html-manager)
+      - -e .

@@ -1,11 +1,30 @@
 site_name: NeuroMorpho ML Pipeline
 theme:
   name: material
+  custom_dir: docs/overrides
+
+plugins:
+  - search
+  - mkdocs-jupyter:
+      execute: false
+extra_javascript:
+  - https://unpkg.com/thebe@0.8.2/lib/index.js
+  - https://unpkg.com/@jupyter-widgets/html-manager@1.0.8/dist/index.js
+extra_css:
+  - https://unpkg.com/thebe@0.8.2/lib/thebe.css
 
 nav:
   - Accueil: index.md
-  - Creer un repo Documentation : coockie_cutter.md
-  - Les techniques d'imagerie: techniques_imagerie.md
-  - Notes 12/08/2025 - Lattice Sim²: 00_notes_120825.md
-  - Base de données ouvertes : base_données_ouvertes.md
+  - Notes : 
+      - Creer un repo Documentation : coockie_cutter.md
+      - Les techniques d'imagerie: techniques_imagerie.md
+      - Notes 12/08/2025 - Lattice Sim²: 00_notes_120825.md
+      - Base de données ouvertes : base_données_ouvertes.md
+  - Notebooks:
+      - Intro & Setup: notebooks/1.0_intro_setup.ipynb
+      - QC SWC: notebooks/2.0_chargement_QC.ipynb
+      - Recalage spatial: notebooks/3.0_recalage_spatial.ipynb
+      - Features: notebooks/4.0_extraction_features.ipynb
+      - PCA/t-SNE/UMAP: notebooks/5.0_EDA_PCA_tSNE_UMAP.ipynb
+
 
