@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="..">
-      
-      
-        <link rel="next" href="../techniques_imagerie/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +16,7 @@
     
     
       
-        <title>Creer un repo Documentation - NeuroMorpho ML Pipeline</title>
+        <title>01 notes 120825 - NeuroMorpho ML Pipeline</title>
       
     
     
@@ -61,11 +57,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#creer-une-documentation-en-ligne-markdown" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -98,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Creer un repo Documentation
+              01 notes 120825
             
           </span>
         </div>
@@ -213,19 +204,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../coockie_cutter/" class="md-nav__link">
         
   
   
@@ -236,7 +218,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -324,8 +305,6 @@
   
   
   
-    
-  
   
 </nav>
                   </div>
@@ -341,191 +320,52 @@
 
 
 
-<h1 id="creer-une-documentation-en-ligne-markdown">Créer une documentation en ligne Markdown.</h1>
-<p>Ce document explique comment écrire une documentation comme celle ci. L'objectif est que la documentation soit publique, open source, clair.
-La motivation vient d'un besoin personel de répertorier l'ensemble des notes acquises lors de la veille technique formation, apprentissage en lien avec l'analyse de donnée et le métier d'ingénieur de recherche, et bio-informaticien.</p>
-<h1 id="guide-detaille-quest-ce-que-cookiecutter-comment-linstaller-et-creer-un-repo-github-avec">Guide détaillé : Qu’est-ce que Cookiecutter, comment l’installer et créer un repo Github avec</h1>
-<p>Ce document explique étape par étape ce qu’est <strong>Cookiecutter</strong>, comment l’installer facilement, et comment utilser le template pour créer un repo Github. </p>
-<hr />
-<h2 id="1-quest-ce-que-cookiecutter">1. Qu’est-ce que Cookiecutter ?</h2>
-<p><strong>Cookiecutter</strong> est un outil open source Python qui permet de générer rapidement la structure complète d’un projet à partir de modèles (templates) réutilisables.</p>
-<h3 id="a-quoi-sert-cookiecutter">À quoi sert Cookiecutter ?</h3>
-<ul>
-<li>Automatiser la création de la base d’un projet logiciel ou scientifique.</li>
-<li>Garantir une organisation standardisée, claire et adaptée aux bonnes pratiques.</li>
-<li>Éviter de copier-coller un vieux projet et perdre du temps à organiser ses dossiers/fichiers.</li>
-<li>Faciliter la reproductibilité et la collaboration en partant d’une base propre et documentée.</li>
-</ul>
-<h3 id="comment-ca-marche">Comment ça marche ?</h3>
-<ul>
-<li>Cookiecutter utilise des <strong>templates</strong> (souvent hébergés sur GitHub).</li>
-<li>Ces templates contiennent :</li>
-<li>Une structure de fichiers et dossiers</li>
-<li>Des fichiers avec des variables que l’on remplit au moment de la création (exemple : nom du projet, auteur, description)</li>
-<li>Des scripts ou fichiers de configuration</li>
-<li>Cookiecutter te pose des questions pour personnaliser ton projet (nom, licence, gestion de l’environnement, dépendances…).</li>
-<li>À partir de tes réponses, il génère un dossier complet prêt à l’emploi.</li>
-</ul>
-<h3 id="technologies-sous-jacentes">Technologies sous-jacentes</h3>
-<ul>
-<li>Basé sur le moteur de template <strong>Jinja2</strong> pour rendre dynamique la génération des fichiers.</li>
-<li>Travaille en ligne de commande, compatible avec tous les environnements Python.</li>
-</ul>
-<hr />
-<h2 id="2-comment-installer-cookiecutter">2. Comment installer Cookiecutter ?</h2>
-<h3 id="prerequis">Prérequis</h3>
-<ul>
-<li>Avoir Python installé (version 3.3 ou supérieure recommandée).</li>
-<li>Avoir <code>pip</code>, le gestionnaire de paquets Python.</li>
-</ul>
-<h3 id="installation-simple-via-pip">Installation simple via pip</h3>
-<p>Ouvre un terminal (PowerShell sous Windows, Terminal sous Mac/Linux) et tape la commande :</p>
-<pre><code class="language-bash">pip install &quot;cookiecutter&gt;=1.7.0&quot;
-</code></pre>
-<h3 id="verification">Vérification</h3>
-<p>Pour vérifier que Cookiecutter est bien installé, exécute :</p>
-<pre><code class="language-bash">cookiecutter --version
-</code></pre>
-<p>Si la commande est reconnue, tu es prêt·e à l’utiliser.</p>
-<blockquote>
-<p><strong>Remarque :</strong> Si la commande <code>cookiecutter</code> n’est pas trouvée, il peut s’agir d’un problème de variable d’environnement PATH (surtout sous Windows). Dans ce cas, essaie :</p>
-</blockquote>
-<pre><code class="language-bash">python -m cookiecutter --version
-</code></pre>
-<hr />
-<h2 id="3-utiliser-cookiecutter-pour-creer-un-projet">3. Utiliser Cookiecutter pour créer un projet</h2>
-<h3 id="etape-1-choisir-un-template">Étape 1 : Choisir un template</h3>
-<p>Tu peux utiliser :</p>
-<ul>
-<li>Un template officiel (exemple : <code>https://github.com/drivendata/cookiecutter-data-science</code> pour des projets data science)</li>
-<li>Un dépôt GitHub public contenant ton template personnalisé</li>
-<li>Ton propre template local (dossier avec la structure du template)</li>
-</ul>
-<h3 id="etape-2-lancer-la-commande-cookiecutter">Étape 2 : Lancer la commande Cookiecutter</h3>
-<p>Dans ton terminal, tape :</p>
-<pre><code class="language-bash">cookiecutter https://github.com/drivendata/cookiecutter-data-science
-</code></pre>
-<blockquote>
-<p>Remplace l’URL par celle de ton template.</p>
-</blockquote>
-<h3 id="etape-3-repondre-aux-questions">Étape 3 : Répondre aux questions</h3>
-<p>Cookiecutter te posera une série de questions pour personnaliser le projet, par exemple :</p>
-<ul>
-<li>Nom du projet</li>
-<li>Nom du module Python</li>
-<li>Auteur</li>
-<li>Description</li>
-<li>Gestionnaire d’environnement (conda, pip…)</li>
-<li>Licence open source</li>
-<li>Framework de test ou formatting à utiliser</li>
-</ul>
-<p>Ces questions sont définies dans un fichier <code>cookiecutter.json</code> dans le template.</p>
-<h3 id="etape-4-generation-du-projet">Étape 4 : Génération du projet</h3>
-<p>Après avoir répondu, Cookiecutter crée un nouveau dossier portant le nom de ton projet, avec :</p>
-<ul>
-<li>Tous les fichiers de base configurés selon tes choix</li>
-<li>La structure de dossiers recommandée (données, scripts, tests, documentation, etc.)</li>
-<li>Fichiers de configuration (environnement, licence, README)</li>
-</ul>
-<p>Tu peux directement commencer le développement dedans.</p>
-<hr />
-<h2 id="4-exemple-concret-creation-de-ton-projet-neuromorpho_ml_pipeline">4. Exemple concret : Création de ton projet <code>NeuroMorpho_ML_Pipeline</code></h2>
-<p>J'ai utilisé le template <strong>cookiecutter-data-science</strong> pour générer un dépôt structuré pour un projet ML sur les données NeuroMorpho.</p>
-<p>Voici les options que j'ai choisi :</p>
-<pre><code class="language-bash">ccds
-</code></pre>
-<p>(Commande raccourcie pour cookiecutter-data-science)
-Choix des paramètres avec réponses types, par exemple :</p>
-<p>project_name: NeuroMorpho_ML_Pipeline
-repo_name: NeuroMorpho_ML_Pipeline
-module_name: NeuroMorpho_ML_Pipeline
-author_name: Maxime Dieudonné
-description: Demo project ML techniques for NeuroMorpho data analysis
-dataset_storage: none
-environment_manager: conda
-dependency_file: environment.yml
-pydata_packages: basic
-testing_framework: pytest
-linting_and_formatting: flake8 + black + isort
-open_source_license: MIT
-docs: mkdocs
-include_code_scaffold: no</p>
-<h3 id="ce-que-ca-a-cree">Ce que ça a créé</h3>
-<ul>
-<li>Un dossier <code>NeuroMorpho_ML_Pipeline/</code> avec le code de ton module</li>
-<li>Des dossiers <code>data/</code>, <code>notebooks/</code>, <code>tests/</code>, <code>docs/</code> (documentation MkDocs)</li>
-<li>Un fichier <code>environment.yml</code> pour créer un environnement conda avec toutes les dépendances</li>
-<li>Un <code>README.md</code> pré-rempli avec la description</li>
-<li>Des fichiers de licence (MIT), de configuration pour tests (pytest) et linting (flake8, black, isort)</li>
-<li>Une base pour la documentation avec MkDocs prête à éditer</li>
-</ul>
-<p>On a une structure reproductible, prête à être versionnée sous Git, partagée sur GitHub et maintenue par toute équipe.</p>
-<hr />
-<h2 id="5-conseils-dusage">5. Conseils d’usage</h2>
-<ul>
-<li>Modifie les fichiers <code>README.md</code> et ceux dans <code>docs/</code> pour documenter précisément ton projet.</li>
-<li>Utilise <code>conda env create -f environment.yml</code> pour recréer l’environnement de travail.</li>
-<li>Mets ton code dans le dossier du module (ici <code>NeuroMorpho_ML_Pipeline/</code>).</li>
-<li>Ajoute des tests dans <code>tests/</code> et exécute <code>pytest</code> pour la qualité.</li>
-<li>Gère la documentation avec <code>mkdocs serve</code> et publie-la sur GitHub Pages si besoin.</li>
-<li>Versionne tout avec Git et héberge sur GitHub (utilise la commande <code>git push</code>).</li>
-</ul>
-<hr />
-<h2 id="6-ressources-utiles">6. Ressources utiles</h2>
-<ul>
-<li><a href="https://cookiecutter.readthedocs.io/en/stable/">Documentation officielle Cookiecutter (anglais)</a></li>
-<li><a href="https://github.com/drivendata/cookiecutter-data-science">Exemple Cookiecutter Data Science github</a></li>
-<li><a href="https://www.youtube.com/watch?v=Ple0vlNbUI8">Tutoriel vidéo rapide en français</a></li>
-<li>Guide Microsoft Visual Studio (français) pour Cookiecutter : création via interface GUI <a href="https://learn.microsoft.com/fr-fr/visualstudio/python/quickstart-04-python-in-visual-studio-project-from-cookiecutter?view=vs-2022">lien ici</a></li>
-</ul>
-<hr />
-<h3 id="en-resume">En résumé</h3>
-<table>
-<thead>
-<tr>
-<th>Étape</th>
-<th>Action clé</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Présentation</td>
-<td>Cookiecutter = automatisation création projet</td>
-</tr>
-<tr>
-<td>Installation</td>
-<td><code>pip install cookiecutter</code></td>
-</tr>
-<tr>
-<td>Lancement</td>
-<td><code>cookiecutter &lt;url_du_template&gt;</code></td>
-</tr>
-<tr>
-<td>Personnalisation</td>
-<td>Répondre aux questions configurables</td>
-</tr>
-<tr>
-<td>Résultat</td>
-<td>Projet complet généré, prêt à coder</td>
-</tr>
-<tr>
-<td>Maintien</td>
-<td>Versionnement git, documentation, tests</td>
-</tr>
-</tbody>
-</table>
-<p>Avec Cookiecutter, tu gagnes un temps précieux et tu assures la cohérence de tes projets, ce qui est idéal pour un travail scientifique et collaboratif de qualité.</p>
-<hr />
-<h1 id="commandes">commandes</h1>
-<pre><code class="language-bash">mkdocs serve --config-file docs/mkdocs.yml  
-````
+  <h1>01 notes 120825</h1>
 
-```bash
-mkdocs build --config-file docs/mkdocs.yml  
-````
+<p>Voici comment tu peux concevoir un projet de pipeline Python (avec PyTorch) pour l’analyse morphométrique de neurones 3D, directement inspiré de ton exemple, avec recommandations concrètes pour des données ouvertes, et en respectant le workflow FAIR et l’intégration de machine learning :
+1. Où trouver des données ouvertes sur la morphologie neuronale ?</p>
+<pre><code>NeuroMorpho.Org : C’est la plus grande base de reconstructions neuronales 3D au format SWC, issue de multiples espèces, régions, types cellulaires et contextes pathologiques (ex : hétérotopie, épilepsie). On peut filtrer selon espèce, structure, expérience, puis télécharger des lots de SWC pour analyse automatique.
+</code></pre>
+<p>BrainAtlas, Allen Brain Atlas, ou MouseLight : D’autres bases, complémentaires, mais NeuroMorpho reste la référence pour le format standardisé SWC.</p>
+<p>Données associées à des publications récentes : Chercher des études sur l’hétérotopie (cf. articles sur GMH, Eml1/RhoA mutants…) qui déposent leurs reconstructions SWC en annexe ou via NeuroMorpho (souvent cité dans la section « Data Availability » des papiers).
+2. Pipeline de traitement d’images/morphologie Python &amp; ML
+a) Téléchargement et organisation des données</p>
+<pre><code>Récupère un jeu de SWC sur NeuroMorpho (ex : cortex, type : pyramidal ou interneurone, mutant ou contrôle).
 
-```bash
-mkdocs gh-deploy --config-file docs/mkdocs.yml
+Structure le dossier (voir section précédente : /data, /src, /notebooks).
+</code></pre>
+<p>b) Prétraîtement et normalisation spatiale</p>
+<pre><code>Utilise la librairie MorphoPy ou NeuroM pour charger/analyser/visualiser chaque fichier SWC.
+
+Entraîne (ou applique) une étape de recalage spatial afin d’aligner tous les neurones sur un même repère ou landmark (ex : centre de l’hétérotopie, repère anatomique commun).
+
+    Pour cela, tu peux t’inspirer de méthodes d’enregistrement spatial tirées de l’imagerie (rigid/affine registration via numpy/scipy).
+</code></pre>
+<p>c) Extraction automatique des features morphologiques</p>
+<pre><code>Avec MorphoPy ou NeuroM, extrait : nombre de branches, longueur, diamètre, surface, répartition axones/dendrites, etc.
+
+Stocke les features sous format tabulaire (features.csv).
+</code></pre>
+<p>d) Analyse &amp; Machine Learning (PyTorch)</p>
+<pre><code>Utilise un notebook pour :
+
+    Appliquer une réduction de dimension (PCA, t-SNE) pour visualisation.
+
+    Classification automatique des morphotypes (k-means, clustering hiérarchique, ou classifieur supervisé avec PyTorch si tu as un label par exemple : mutant vs contrôle, ou par morphotype).
+
+    Ou encore apprentissage de signatures morpho-électriques en fusionnant avec d’autres features (avec PyTorch, design d’un autoencodeur ou d’un réseau simple dense).
+</code></pre>
+<p>e) Visualisation avancée</p>
+<pre><code>Produis automatiquement :
+
+    Cartes de densité ou overlays (via MorphoPy ou matplotlib).
+
+    Figure de la distribution spatiale des axones/dendrites par rapport au landmark commun.
+
+    Diagrammes de clusters/UMAP/PCA des morphotypes.
+</code></pre>
+<p>f) Génère la documentation, la reproductibilité et package le tout pour le dépôt GitHub</p>
+<pre><code>Scripts clairs, notebooks, README, metadata (desc. des fichiers, provenance, licences).
 </code></pre>
 
 
