@@ -3,51 +3,72 @@
 {% block content %}
   {{ super() }}
 
-  <div style="margin: 0 0 1rem 0">
-    <button id="launch-thebe" class="md-button">
-      Activer l'exécution (Thebe)
-    </button>
-  </div>
+  {# Bouton visible seulement sur les pages de notebooks #}
+  {% if page.url.startswith('notebooks/') %}
+    <p><button id="launch-thebe" class="md-button">▶️ Activer l'exécution (Thebe)</button></p>
+  {% endif %}
 
-  <!-- Config Thebe : Binder + sélecteurs des cellules -->
+  <!-- Configuration Thebe -->
   <script type="text/x-thebe-config">
   {
     "useBinder": true,
     "binderOptions": {
       "repo": "maximedieudonne/NeuroMorpho_ML_Pipeline",
-      "ref": "main"
+      "ref": "main",
+      "binderUrl": "https://mybinder.org"
     },
     "kernelOptions": {
       "name": "python3",
-      "path": "./docs/notebooks"
+      "path": "./"        // racine du repo côté Binder -> accès à docs/_demo/...
     },
     "requestKernel": true,
-    /* Ces sélecteurs fonctionnent généralement avec mkdocs-jupyter/nbconvert.
-       Si rien ne s'active, essaie:
-       selector: "div.cell", selector_input: "pre", selector_output: ".output" */
-    "selector": "div.cell",
-    "selector_input": "div.input, pre",
-    "selector_output": "div.output"
 
+    /* On n'utilise PAS les sélecteurs par défaut.
+       On va marquer les cellules dynamiquement avec data-executable (voir JS plus bas). */
+    "selector": "[data-executable]",
+    "selector_input": "pre",
+    "selector_output": ".output"
   }
   </script>
 
   <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('launch-thebe');
-    if (!btn) return;
-    btn.addEventListener('click', async () => {
-      try {
-        btn.disabled = true;
-        btn.textContent = 'Démarrage du kernel Binder... (1ère fois = ~1-3 min)';
-        if (window.thebe) await thebe.bootstrap();
-        btn.textContent = 'Prêt (utilise les boutons Run à côté des cellules)';
-      } catch (e) {
-        btn.disabled = false;
-        btn.textContent = 'Échec — réessayer';
-        console.error(e);
+  // Material charge les pages en AJAX : il faut réinitialiser à chaque navigation
+  document$.subscribe(() => {
+    // 1) Marquer toutes les cellules code comme exécutables (robuste à mkdocs-jupyter)
+    //    On cible à la fois la structure "Notebook" et les blocs "highlight" classiques.
+    const codeBlocks = document.querySelectorAll(
+      'div.jp-Cell pre, div.highlight pre, pre code'
+    );
+    codeBlocks.forEach(pre => {
+      // on marque le parent le plus proche qui entoure <pre>, sinon Thebe ne voit pas la cellule
+      const host = pre.closest('div.jp-Cell, div.highlight, pre') || pre;
+      host.setAttribute('data-executable', 'true');
+      host.setAttribute('data-language', 'python');  // aide Thebe
+      // zone d'affichage de sortie si besoin
+      if (!host.nextElementSibling || !host.nextElementSibling.matches('[data-output]')) {
+        const out = document.createElement('div');
+        out.setAttribute('data-output', 'true');
+        host.insertAdjacentElement('afterend', out);
       }
     });
+
+    // 2) Bouton d’activation -> lance thebe.bootstrap()
+    const btn = document.getElementById('launch-thebe');
+    if (btn) {
+      btn.onclick = async () => {
+        try {
+          btn.disabled = true;
+          btn.textContent = 'Démarrage du kernel Binder… (1–3 min la 1ère fois)';
+          if (!window.thebe) throw new Error('Thebe non chargé');
+          await thebe.bootstrap();                     // ← clé : initialise Thebe avec la config ci-dessus
+          btn.textContent = 'Prêt ✅ — clique sur les icônes Run';
+        } catch (e) {
+          console.error(e);
+          btn.disabled = false;
+          btn.textContent = 'Échec — réessayer';
+        }
+      };
+    }
   });
   </script>
 {% endblock %}
