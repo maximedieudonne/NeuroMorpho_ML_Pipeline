@@ -15,6 +15,19 @@ dependencies:
   - flake8
   - isort
   - pytest
+  - neurom
+  - morphio
+  - morphopy
+  - navis
+  - umap-learn
+  - scikit-learn
+  - pytorch
+  - pandas
+  - matplotlib
+  - seaborn
+  - scipy
+  - numpy
+
   - pip:
     - python-dotenv
     - mkdocs

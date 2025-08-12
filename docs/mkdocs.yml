@@ -1,4 +1,11 @@
-site_name: NeuroMorpho_ML_Pipeline
-# 
-site_author: Maxime Dieudonné
-# 
+site_name: NeuroMorpho ML Pipeline
+theme:
+  name: material
+
+nav:
+  - Accueil: index.md
+  - Creer un repo Documentation : coockie_cutter.md
+  - Les techniques d'imagerie: techniques_imagerie.md
+  - Notes 12/08/2025 - Lattice Sim²: 00_notes_120825.md
+  - Base de données ouvertes : base_données_ouvertes.md
+
