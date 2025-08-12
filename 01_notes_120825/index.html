@@ -57,6 +57,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#pipeline-de-traitement-dimagesmorphologie-python-ml" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -190,7 +195,7 @@
   
   
   <span class="md-ellipsis">
-    Accueil
+    Acccueil
     
   </span>
   
@@ -515,6 +520,23 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-de-traitement-dimagesmorphologie-python-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipeline de traitement d’images/morphologie Python &amp; ML
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -531,14 +553,8 @@
 
   <h1>01 notes 120825</h1>
 
-<p>Voici comment tu peux concevoir un projet de pipeline Python (avec PyTorch) pour l’analyse morphométrique de neurones 3D, directement inspiré de ton exemple, avec recommandations concrètes pour des données ouvertes, et en respectant le workflow FAIR et l’intégration de machine learning :
-1. Où trouver des données ouvertes sur la morphologie neuronale ?</p>
-<pre><code>NeuroMorpho.Org : C’est la plus grande base de reconstructions neuronales 3D au format SWC, issue de multiples espèces, régions, types cellulaires et contextes pathologiques (ex : hétérotopie, épilepsie). On peut filtrer selon espèce, structure, expérience, puis télécharger des lots de SWC pour analyse automatique.
-</code></pre>
-<p>BrainAtlas, Allen Brain Atlas, ou MouseLight : D’autres bases, complémentaires, mais NeuroMorpho reste la référence pour le format standardisé SWC.</p>
-<p>Données associées à des publications récentes : Chercher des études sur l’hétérotopie (cf. articles sur GMH, Eml1/RhoA mutants…) qui déposent leurs reconstructions SWC en annexe ou via NeuroMorpho (souvent cité dans la section « Data Availability » des papiers).
-2. Pipeline de traitement d’images/morphologie Python &amp; ML
-a) Téléchargement et organisation des données</p>
+<h2 id="pipeline-de-traitement-dimagesmorphologie-python-ml">Pipeline de traitement d’images/morphologie Python &amp; ML</h2>
+<p>a) Téléchargement et organisation des données</p>
 <pre><code>Récupère un jeu de SWC sur NeuroMorpho (ex : cortex, type : pyramidal ou interneurone, mutant ou contrôle).
 
 Structure le dossier (voir section précédente : /data, /src, /notebooks).
