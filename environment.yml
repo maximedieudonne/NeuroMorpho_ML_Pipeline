@@ -31,4 +31,6 @@ dependencies:
   - pip:
     - python-dotenv
     - mkdocs
+    - mkdocs-material
+    - mkdocs-jupyter
     - -e .
